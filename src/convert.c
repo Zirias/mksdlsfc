@@ -32,7 +32,8 @@ int convert(const char *imgFileName, const char *surfaceName,
             "#define MKSDLSFC_%s_SURFACE\n\n"
             "#include <SDL2/SDL.h>\n\n", upper, upper);
     free(upper);
-    fprintf(header, "SDL_Surface *%s_surface();\n\n#endif\n", surfaceName);
+    fprintf(header,
+	    "SDL_Surface *%s_surface(void);\n\n#endif\n", surfaceName);
 
     fputs("#include <SDL2/SDL.h>\n\n", implementation);
     fprintf(implementation, "static unsigned char %s_pixels[] = {",
@@ -48,7 +49,7 @@ int convert(const char *imgFileName, const char *surfaceName,
     }
     fputs("\n};\n\n", implementation);
 
-    fprintf(implementation, "SDL_Surface *%s_surface()\n{\n"
+    fprintf(implementation, "SDL_Surface *%s_surface(void)\n{\n"
             "    return SDL_CreateRGBSurfaceWithFormatFrom(\n"
             "            %s_pixels, %d, %d,\n"
             "            %d, %d, %s);\n}\n", surfaceName, surfaceName,

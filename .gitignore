@@ -1,0 +1,14 @@
+*.config
+*.creator
+*.user
+*.files
+*.includes
+*.swp
+*.cfg
+*.dll
+*.exe
+obj/
+bin/
+lib/
+test/
+
